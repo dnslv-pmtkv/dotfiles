@@ -1,0 +1,9 @@
+[user]
+	name = Danislav Pometkov
+	email = 254772902+dnslv-pmtkv@users.noreply.github.com
+[core]
+	editor = nvim
+
+[pull]
+  rebase = true
+
