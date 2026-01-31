@@ -51,13 +51,3 @@ startup_mode = "Maximized"
 dynamic_title = false
 decorations = "none"
 title = "Alacritty"
-
-
-[[hints.enabled]]
-command = "open"
-hyperlinks = true
-post_processing = true
-persist = false
-mouse.enabled = true
-binding = { key = "U", mods = "Control|Shift" }
-regex = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
