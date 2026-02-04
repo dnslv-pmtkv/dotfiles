@@ -43,4 +43,7 @@ link "$DOTFILES_DIR/nvim" "$CONFIG_DIR/nvim"
 # Git
 link "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
 
+# Themes
+link "$DOTFILES_DIR/themes" "$HOME/.local/share/plasma/look-and-feel"
+
 echo -e "✔ Dotfiles installed successfully!"
