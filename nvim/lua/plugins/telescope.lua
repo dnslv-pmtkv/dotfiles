@@ -24,7 +24,7 @@ return {
       ':Telescope find_files hidden=true no_ignore=true<CR>',
       opts 'Find files'
     )
-    keymap('n', '<C-b>', ':Telescope buffers <CR>', opts 'Buffers')
+    keymap('n', '<leader>fb', ':Telescope buffers <CR>', opts 'Buffers')
     keymap('n', '<leader>fg', ':Telescope git_files<CR>', opts 'Git files')
     keymap('n', '<leader>fr', ':Telescope oldfiles<CR>', opts 'Recent files')
     keymap('n', '<leader>ff', ':Telescope live_grep<CR>', opts 'Live grep')
@@ -41,14 +41,6 @@ return {
       '<leader>gr',
       ':Telescope lsp_references<CR>',
       opts 'Lsp references'
-    )
-    vim.keymap.set('n', '<space>fb', ':Telescope file_browser<CR>')
-
-    -- open file_browser with the path of the current buffer
-    vim.keymap.set(
-      'n',
-      '<space>fb',
-      ':Telescope file_browser path=%:p:h select_buffer=true<CR>'
     )
 
     telescope.setup {

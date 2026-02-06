@@ -138,3 +138,5 @@ vim.keymap.set('n', '<leader>rf', function()
     print('Renamed to ' .. new_name)
   end
 end, { desc = 'Rename current file' })
+
+vim.keymap.set('n', '<leader>q', ':bp|bd#<CR>', opts)
