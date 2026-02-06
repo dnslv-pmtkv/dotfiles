@@ -13,6 +13,12 @@ alias nrd="npm run dev"
 alias nrb="npm run build"
 
 # Git
-alias gst="git status"
+alias ga='git add'
 alias gc="git commit --verbose"
+alias gp="git push"
+alias gl="git pull"
+alias gst="git status"
 alias gco="git checkout"
+alias grb='git rebase'
+alias grs='git restore'
+alias gss='git stash'
