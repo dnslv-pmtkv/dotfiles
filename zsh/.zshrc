@@ -122,8 +122,7 @@ source ~/.powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-ALIASES="${0:A}/.aliases"
-[[ -f "$ALIASES" ]] && source "$ALIASES"
+[[ -f ~/.aliases ]] && source ~/.aliases
 
 eval "$(uv generate-shell-completion zsh)"
 eval "$(uvx --generate-shell-completion zsh)"

@@ -36,6 +36,8 @@ link "$DOTFILES_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
 
 # Zsh
 link "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
+link "$DOTFILES_DIR/zsh/.aliases" "$HOME/.aliases"
+link "$DOTFILES_DIR/zsh/powerlevel10k.zsh-theme" "$HOME/powerlevel10k.zsh-theme"
 
 # Neovim
 link "$DOTFILES_DIR/nvim" "$CONFIG_DIR/nvim"
