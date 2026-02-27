@@ -17,6 +17,7 @@ return {
         markdown = { 'prettierd' },
         graphql = { 'prettierd' },
         python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
+        bash = { 'shfmt' },
       },
 
       format_on_save = {

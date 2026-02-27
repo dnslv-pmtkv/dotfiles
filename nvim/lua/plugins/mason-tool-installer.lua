@@ -26,6 +26,7 @@ return {
         'prettierd',
         'isort',
         'black',
+        'shfmt', -- bash
       },
     }
   end,
