@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
-SRC="$HOME/dotfiles/audio/virtual-sinks.conf"
+SRC="$HOME/Projects/dotfiles/audio"
 DEST="$HOME/.config/pipewire/pipewire-pulse.conf.d"
+BACKUP_DIR="$HOME/.dotfiles_backup"
 
 link() {
   local src="$1"
@@ -26,9 +27,11 @@ link() {
 
 mkdir -p "$DEST"
 
-link "$SRC/virtual-sinks.conf" "$HOME/virtual-sinks.conf"
+link "$SRC/virtual-sinks.conf" "$DEST/virtual-sinks.conf"
 
 systemctl --user restart pipewire pipewire-pulse wireplumber
 
 echo "Symlinks installed."
+
+
 
