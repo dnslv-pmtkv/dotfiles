@@ -7,6 +7,8 @@ return {
       vim.g.loaded_netrwPlugin = 1
 
       local api = require 'nvim-tree.api'
+      local tree = require 'nvim-tree'
+
       vim.keymap.set('n', '<C-b>', api.tree.toggle)
 
       local function my_on_attach(bufnr)
@@ -67,7 +69,8 @@ return {
         vim.keymap.set('n', '<Tab>', api.node.open.preview, opts 'Open Preview')
       end
 
-      require('nvim-tree').setup {
+      ---@type tree.config
+      local config = {
         on_attach = my_on_attach,
         open_on_tab = true,
         hijack_cursor = true,
@@ -120,6 +123,10 @@ return {
           },
         },
       }
+
+      tree.setup(config)
+
+      vim.keymap.set('n', '<C-b>', api.tree.toggle)
     end,
   },
 }
