@@ -72,6 +72,13 @@ return {
     })
 
     local capabilities = cmp_nvim_lsp.default_capabilities()
+    local on_attach = function(client, bufnr)
+      client.server_capabilities.colorProvider = false
+
+      if vim.lsp.document_color then
+        vim.lsp.document_color.enable(false, { bufnr = bufnr })
+      end
+    end
 
     vim.lsp.config('lua_ls', {
       capabilities = capabilities,
@@ -155,6 +162,17 @@ return {
     })
 
     vim.lsp.config('ruff', { capabilities = capabilities })
+
+    vim.lsp.config('tailwindcss', {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      -- settings = { tailwindCSS = { colorDecorators = false } },
+    })
+
+    vim.lsp.config(
+      'cssls',
+      { capabilities = capabilities, on_attach = on_attach }
+    )
 
     vim.diagnostic.config {
       virtual_text = false,
