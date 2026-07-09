@@ -124,3 +124,5 @@ export NVM_DIR="$HOME/.nvm"
 
 eval "$(uv generate-shell-completion zsh)"
 eval "$(uvx --generate-shell-completion zsh)"
+
+eval "$(jump shell --bind=j)"
