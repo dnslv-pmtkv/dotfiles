@@ -8,11 +8,12 @@ dynamic_title = false
 title = "Alacritty"
 
 [font]
-size = 14
-normal = { family = "FiraCode Nerd Font Mono", style = "Regular" }
-bold = { family = "FiraCode Nerd Font Mono", style = "Bold" }
-italic = { family = "FiraCode Nerd Font Mono", style = "Italic" }
-bold_italic = { family = "FiraCode Nerd Font Mono", style = "Bold Italic" }
+size = 15 # PC
+# size = 14 # laptop
+normal = { family = "UbuntuMono Nerd Font", style = "Regular" }
+bold = { family = "UbuntuMono Nerd Font", style = "Bold" }
+italic = { family = "UbuntuMono Nerd Font", style = "Italic" }
+bold_italic = { family = "UbuntuMono Nerd Font", style = "Bold Italic" }
 
 [colors]
 primary = { background = "#282c34", foreground = "#abb2bf" }
