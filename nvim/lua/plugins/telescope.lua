@@ -4,11 +4,11 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons',
     'folke/todo-comments.nvim',
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   },
   config = function()
     local telescope = require 'telescope'
 
-    local keymap = vim.keymap.set
     local function opts(desc)
       return {
         desc = 'Telescope: ' .. desc,
@@ -18,25 +18,42 @@ return {
       }
     end
 
-    keymap(
+    vim.keymap.set(
       'n',
       '<C-p>',
       ':Telescope find_files hidden=true no_ignore=true<CR>',
       opts 'Find files'
     )
-    keymap('n', '<leader>fb', ':Telescope buffers <CR>', opts 'Buffers')
-    keymap('n', '<leader>fg', ':Telescope git_files<CR>', opts 'Git files')
-    keymap('n', '<leader>fr', ':Telescope oldfiles<CR>', opts 'Recent files')
-    keymap('n', '<leader>ff', ':Telescope live_grep<CR>', opts 'Live grep')
-    keymap('n', '<leader>ft', '<cmd>TodoTelescope<cr>', opts 'Find todos')
-    keymap('n', '<leader>R', ':Telescope resume<CR>', opts 'Resume')
-    keymap(
+    vim.keymap.set('n', '<C-f>', ':Telescope live_grep<CR>', opts 'Live grep')
+
+    vim.keymap.set(
       'n',
-      '<leader>/',
+      '<M-f>',
       ':Telescope current_buffer_fuzzy_find <CR>',
       opts 'Current buffer fuzyz find'
     )
-    keymap(
+
+    vim.keymap.set('n', '<leader>fb', ':Telescope buffers <CR>', opts 'Buffers')
+    vim.keymap.set(
+      'n',
+      '<leader>fg',
+      ':Telescope git_files<CR>',
+      opts 'Git files'
+    )
+    vim.keymap.set(
+      'n',
+      '<leader>fr',
+      ':Telescope oldfiles<CR>',
+      opts 'Recent files'
+    )
+    vim.keymap.set(
+      'n',
+      '<leader>ft',
+      '<cmd>TodoTelescope<cr>',
+      opts 'Find todos'
+    )
+    vim.keymap.set('n', '<leader>R', ':Telescope resume<CR>', opts 'Resume')
+    vim.keymap.set(
       'n',
       '<leader>gr',
       ':Telescope lsp_references<CR>',
@@ -44,6 +61,15 @@ return {
     )
 
     telescope.setup {
+      extensions = {
+        fzf = {
+          fuzzy = true, -- false will only do exact matching
+          override_generic_sorter = true, -- override the generic sorter
+          override_file_sorter = true, -- override the file sorter
+          case_mode = 'smart_case', -- or "ignore_case" or "respect_case"
+          -- the default case_mode is "smart_case"
+        },
+      },
       defaults = {
         sorting_strategy = 'ascending',
         path_display = { 'filename_first' },
@@ -67,5 +93,7 @@ return {
         },
       },
     }
+
+    telescope.load_extension 'fzf'
   end,
 }
