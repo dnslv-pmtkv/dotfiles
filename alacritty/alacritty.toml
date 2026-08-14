@@ -8,8 +8,7 @@ dynamic_title = false
 title = "Alacritty"
 
 [font]
-size = 15 # PC
-# size = 14 # laptop
+size = 15
 normal = { family = "UbuntuMono Nerd Font", style = "Regular" }
 bold = { family = "UbuntuMono Nerd Font", style = "Bold" }
 italic = { family = "UbuntuMono Nerd Font", style = "Italic" }

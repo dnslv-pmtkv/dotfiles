@@ -28,6 +28,7 @@ link() {
 mkdir -p "$DEST"
 
 link "$SRC/virtual-sinks.conf" "$DEST/virtual-sinks.conf"
+link "$SRC/90-mix-to-main.conf" "$DEST/90-mix-to-main.conf"
 
 systemctl --user restart pipewire pipewire-pulse wireplumber
 
