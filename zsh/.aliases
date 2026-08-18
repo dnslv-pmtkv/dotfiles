@@ -22,3 +22,6 @@ alias gco="git checkout"
 alias grb='git rebase'
 alias grs='git restore'
 alias gss='git stash'
+
+# SSH
+alias sshkey='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519'
