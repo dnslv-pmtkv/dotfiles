@@ -24,4 +24,7 @@ alias grs='git restore'
 alias gss='git stash'
 
 # SSH
-alias sshkey='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519'
+alias ss='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519'
+alias sa='ssh-add ~/.ssh/id_ed25519'
+alias sp='ssh-agent -k'
+alias sr='ssh-add -D'
