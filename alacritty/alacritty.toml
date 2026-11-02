@@ -31,4 +31,6 @@ white = "#828997"
 [keyboard]
 bindings = [
   { key = "F11", action = "ToggleFullScreen" },
+  { key = "Return", mods = "shift",  chars = "\u001B\r" },
 ]
+
