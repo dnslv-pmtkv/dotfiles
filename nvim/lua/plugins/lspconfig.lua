@@ -14,7 +14,7 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       'mason-org/mason.nvim',
-      'hrsh7th/cmp-nvim-lsp',
+      'saghen/blink.cmp',
       { 'antosha417/nvim-lsp-file-operations', config = true },
     },
     config = function()
@@ -65,8 +65,9 @@ return {
         end,
       })
 
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
-      vim.lsp.config('*', { capabilities = capabilities })
+      vim.lsp.config('*', {
+        capabilities = require('blink.cmp').get_lsp_capabilities(),
+      })
 
       -- Tailwind and cssls: don't paint colour swatches over the code
       local function disable_document_color(_, bufnr)
