@@ -1,33 +1,14 @@
+-- Formatters and other non-LSP tools. LSP servers live in mason-lspconfig.lua.
 return {
   'WhoIsSethDaniel/mason-tool-installer.nvim',
-  dependencies = {
-    { 'mason-org/mason.nvim', opts = {} },
-    'neovim/nvim-lspconfig',
+  dependencies = { { 'mason-org/mason.nvim', opts = {} } },
+  opts = {
+    ensure_installed = {
+      'stylua',
+      'prettierd',
+      'eslint_d',
+      'ruff',
+      'shfmt',
+    },
   },
-  config = function()
-    require('mason-tool-installer').setup {
-      ensure_installed = {
-
-        'ruff',
-
-        -- LSP
-        'pyright',
-        'ts_ls',
-        'lua-language-server',
-        -- 'ruff-lsp',
-
-        -- Linters
-        'eslint',
-        'eslint_d',
-        'flake8',
-
-        -- Formatters
-        'stylua',
-        'prettierd',
-        'isort',
-        'black',
-        'shfmt', -- bash
-      },
-    }
-  end,
 }

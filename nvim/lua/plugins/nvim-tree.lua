@@ -9,8 +9,6 @@ return {
       local api = require 'nvim-tree.api'
       local tree = require 'nvim-tree'
 
-      vim.keymap.set('n', '<C-b>', api.tree.toggle)
-
       local function my_on_attach(bufnr)
         local function opts(desc)
           return {
@@ -49,7 +47,7 @@ return {
         vim.keymap.set('n', 'c', api.fs.copy.node, opts 'Copy')
         vim.keymap.set('n', 'd', api.fs.remove, opts 'Delete')
         vim.keymap.set('n', 'D', api.fs.trash, opts 'Trash')
-        vim.keymap.set('n', 'f', api.live_filter.start, opts 'Filter')
+        vim.keymap.set('n', 'f', api.filter.live.start, opts 'Filter')
         vim.keymap.set(
           'n',
           'gy',
@@ -126,7 +124,12 @@ return {
 
       tree.setup(config)
 
-      vim.keymap.set('n', '<C-b>', api.tree.toggle)
+      vim.keymap.set(
+        'n',
+        '<C-b>',
+        api.tree.toggle,
+        { desc = 'Toggle file tree' }
+      )
     end,
   },
 }

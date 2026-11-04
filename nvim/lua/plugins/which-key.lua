@@ -6,8 +6,15 @@ return {
     vim.o.timeoutlen = 500
   end,
   opts = {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
+    spec = {
+      { '<leader>c', group = 'code' },
+      { '<leader>f', group = 'find' },
+      { '<leader>g', group = 'goto' },
+      { '<leader>h', group = 'git hunks' },
+      { '<leader>n', group = 'new / no-highlight' },
+      { '<leader>p', group = 'pick' },
+      { '<leader>r', group = 'rename / restart' },
+      { '<leader>s', group = 'splits' },
+    },
   },
 }

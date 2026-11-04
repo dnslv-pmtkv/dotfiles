@@ -1,142 +1,97 @@
 vim.g.mapleader = ' '
 
-local opts = { noremap = true, silent = true }
+local function map(mode, lhs, rhs, desc)
+  vim.keymap.set(mode, lhs, rhs, { silent = true, desc = desc })
+end
 
-vim.keymap.set('n', '<leader>a', 'ggVG')
+map('n', '<leader>a', 'ggVG', 'Select all')
 
 -- Navigate windows
-vim.keymap.set('n', '<C-h>', '<C-w>h', opts)
-vim.keymap.set('n', '<C-j>', '<C-w>j', opts)
-vim.keymap.set('n', '<C-k>', '<C-w>k', opts)
-vim.keymap.set('n', '<C-l>', '<C-w>l', opts)
+map('n', '<C-h>', '<C-w>h', 'Window left')
+map('n', '<C-j>', '<C-w>j', 'Window down')
+map('n', '<C-k>', '<C-w>k', 'Window up')
+map('n', '<C-l>', '<C-w>l', 'Window right')
 
 -- Navigate buffers
-vim.keymap.set('n', '<S-l>', ':BufferLineCycleNext<CR>', opts)
-vim.keymap.set('n', '<S-h>', ':BufferLineCyclePrev<CR>', opts)
-vim.keymap.set(
-  'n',
-  '<leader>pb',
-  '<cmd>BufferLinePick<CR>',
-  { desc = 'Pick buffer' }
-)
+map('n', '<S-l>', '<cmd>BufferLineCycleNext<CR>', 'Next buffer')
+map('n', '<S-h>', '<cmd>BufferLineCyclePrev<CR>', 'Previous buffer')
+map('n', '<leader>pb', '<cmd>BufferLinePick<CR>', 'Pick buffer')
+map('n', '<leader>N', '<cmd>enew<CR>', 'New buffer')
+map('n', '<leader>q', '<cmd>bp|bd#<CR>', 'Close buffer')
 
--- Better vertical movements
-vim.keymap.set('n', '<C-u>', '<C-u>zz', opts)
-vim.keymap.set('n', '<C-d>', '<C-d>zz', opts)
-vim.keymap.set('n', 'n', 'nzzzv', opts)
-vim.keymap.set('n', 'N', 'Nzzzv', opts)
-vim.keymap.set('n', '}', '}zzzv', opts)
-vim.keymap.set('n', '{', '{zzzv', opts)
+-- Keep the cursor centred on big vertical jumps
+map('n', '<C-u>', '<C-u>zz', 'Half page up')
+map('n', '<C-d>', '<C-d>zz', 'Half page down')
+map('n', 'n', 'nzzzv', 'Next match')
+map('n', 'N', 'Nzzzv', 'Previous match')
+map('n', '}', '}zzzv', 'Next paragraph')
+map('n', '{', '{zzzv', 'Previous paragraph')
 
--- New buffer
-vim.keymap.set('n', '<leader>N', ':enew<CR>', opts)
-
--- Add undo break-points
-vim.keymap.set('i', ',', ',<c-g>u', opts)
-vim.keymap.set('i', '.', '.<c-g>u', opts)
-vim.keymap.set('i', ';', ';<c-g>u', opts)
+-- Undo break-points
+map('i', ',', ',<c-g>u', 'Comma with undo break')
+map('i', '.', '.<c-g>u', 'Period with undo break')
+map('i', ';', ';<c-g>u', 'Semicolon with undo break')
 
 -- Move text up and down
-vim.keymap.set('n', '<A-j>', ':m .+1<CR>==', opts)
-vim.keymap.set('n', '<A-k>', ':m .-2<CR>==', opts)
-vim.keymap.set('v', '<A-j>', ':m .+1<CR>==', opts)
-vim.keymap.set('v', '<A-k>', ':m .-2<CR>==', opts)
-vim.keymap.set('x', '<A-j>', ":move '>+1<CR>gv-gv", opts)
-vim.keymap.set('x', '<A-k>', ":move '<-2<CR>gv-gv", opts)
+map('n', '<A-j>', '<cmd>m .+1<CR>==', 'Move line down')
+map('n', '<A-k>', '<cmd>m .-2<CR>==', 'Move line up')
+map('x', '<A-j>', ":move '>+1<CR>gv=gv", 'Move selection down')
+map('x', '<A-k>', ":move '<-2<CR>gv=gv", 'Move selection up')
 
--- Clear highlights
-vim.keymap.set('n', '<leader>nh', ':noh <CR>', opts)
+-- Better indenting
+map('x', '<', '<gv', 'Indent left')
+map('x', '>', '>gv', 'Indent right')
+
+-- Paste over a selection without overwriting the register
+map('x', 'p', 'P', 'Paste without yanking')
+
+map('n', '<leader>nh', '<cmd>nohlsearch<CR>', 'Clear search highlight')
 
 -- Splits
-vim.keymap.set(
-  'n',
-  '<leader>sv',
-  '<C-w>v',
-  { desc = 'Split window vertically' }
-)
-vim.keymap.set(
-  'n',
-  '<leader>sh',
-  '<C-w>s',
-  { desc = 'Split window horizontally' }
-)
-vim.keymap.set('n', '<leader>se', '<C-w>=', { desc = 'Make splits equal size' })
-vim.keymap.set(
-  'n',
-  '<leader>sI',
-  '10<C-w>-',
-  { desc = 'Increase split height' }
-)
-vim.keymap.set(
-  'n',
-  '<leader>sD',
-  '10<C-w>+',
-  { desc = 'Descrease split height' }
-)
-vim.keymap.set(
-  'n',
-  '<leader>sd',
-  '10<C-w><',
-  { desc = 'Descrease split width' }
-)
-vim.keymap.set('n', '<leader>si', '10<C-w>>', { desc = 'Increase split width' })
-vim.keymap.set(
-  'n',
-  '<leader>sx',
-  '<cmd>close<CR>',
-  { desc = 'Close current split' }
-)
+map('n', '<leader>sv', '<C-w>v', 'Split window vertically')
+map('n', '<leader>sh', '<C-w>s', 'Split window horizontally')
+map('n', '<leader>se', '<C-w>=', 'Make splits equal size')
+map('n', '<leader>sI', '10<C-w>+', 'Increase split height')
+map('n', '<leader>sD', '10<C-w>-', 'Decrease split height')
+map('n', '<leader>si', '10<C-w>>', 'Increase split width')
+map('n', '<leader>sd', '10<C-w><', 'Decrease split width')
+map('n', '<leader>sx', '<cmd>close<CR>', 'Close current split')
 
-vim.keymap.set('n', 'gv', ':vs | lua vim.lsp.buf.definition()<CR>', opts)
-vim.keymap.set('n', 'gh', ':split | lua vim.lsp.buf.definition()<CR>', opts)
+-- Go to definition in a split
+map('n', '<leader>gv', function()
+  vim.cmd 'vsplit'
+  vim.lsp.buf.definition()
+end, 'Definition in vertical split')
+map('n', '<leader>gs', function()
+  vim.cmd 'split'
+  vim.lsp.buf.definition()
+end, 'Definition in horizontal split')
 
-vim.keymap.set('v', 'p', 'pgvy', opts)
+map('n', '<leader>cf', function()
+  require('conform').format { async = true, lsp_format = 'fallback' }
+end, 'Format buffer')
 
--- Format document
-vim.keymap.set(
-  'n',
-  '<C-f>',
-  ':lua vim.lsp.buf.format { async = true }<CR>',
-  opts
-)
+-- Disable recording macros
+map('n', 'q', '<Nop>', 'Disabled')
+map('n', 'Q', '<Nop>', 'Disabled')
 
--- better indenting
-vim.keymap.set('v', '<', '<gv', opts)
-vim.keymap.set('v', '>', '>gv', opts)
-
--- disable recording macros
-vim.keymap.set('n', 'q', '<Nop>', opts)
-vim.keymap.set('n', 'Q', '<Nop>', opts)
-
-vim.keymap.set('n', '<leader>nf', function()
-  -- Get current buffer's directory
+map('n', '<leader>nf', function()
   local dir = vim.fn.expand '%:h' .. '/'
-
   local filename = vim.fn.input('New file name: ', dir, 'file')
-
   if filename ~= '' then
-    vim.cmd('edit ' .. filename) -- :e %:h/filename
-    vim.cmd 'write' -- :w
+    vim.cmd.edit(filename)
+    vim.cmd.write()
   end
-end, { desc = 'Create new file in current dir' })
+end, 'Create new file in current dir')
 
-vim.keymap.set('n', '<leader>rf', function()
-  local old_name = vim.fn.expand '%:p' -- full path of current file
+map('n', '<leader>rf', function()
+  local old_name = vim.fn.expand '%:p'
   local new_name = vim.fn.input('Rename to: ', old_name, 'file')
-
   if new_name ~= '' and new_name ~= old_name then
-    -- Ensure parent directory exists
     vim.fn.mkdir(vim.fn.fnamemodify(new_name, ':h'), 'p')
-
-    -- Rename the file
     os.rename(old_name, new_name)
-    vim.cmd('edit ' .. new_name)
-
-    -- Delete the old buffer (avoid [deleted] buffer lingering)
+    vim.cmd.edit(new_name)
     vim.cmd 'bdelete! #'
-
     print('Renamed to ' .. new_name)
   end
-end, { desc = 'Rename current file' })
-
-vim.keymap.set('n', '<leader>q', ':bp|bd#<CR>', opts)
+end, 'Rename current file')

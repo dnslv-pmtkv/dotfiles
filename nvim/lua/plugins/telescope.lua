@@ -24,7 +24,12 @@ return {
       ':Telescope find_files hidden=true no_ignore=true<CR>',
       opts 'Find files'
     )
-    vim.keymap.set('n', '<C-f>', ':Telescope live_grep<CR>', opts 'Live grep')
+    vim.keymap.set(
+      'n',
+      '<leader>ff',
+      ':Telescope live_grep<CR>',
+      opts 'Live grep'
+    )
 
     vim.keymap.set(
       'n',

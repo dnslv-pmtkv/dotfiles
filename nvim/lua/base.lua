@@ -6,9 +6,7 @@ opt.signcolumn = 'yes:1'
 opt.cursorline = true
 
 opt.backspace = 'indent,eol,start'
--- opt.clipboard = 'unnamedplus'
--- set clipboard=unnamedplus
-opt.clipboard:append('unnamedplus')
+opt.clipboard:append 'unnamedplus'
 opt.mouse:append 'a'
 
 opt.scrolloff = 7
@@ -37,7 +35,12 @@ opt.updatetime = 100
 opt.splitright = true
 opt.splitbelow = true
 
-vim.o.winborder = 'rounded'
+opt.winborder = 'rounded'
 
--- No automatic comment insertion
-vim.cmd [[autocmd FileType * set formatoptions-=ro]]
+-- No automatic comment insertion on new lines
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('UserFormatOptions', { clear = true }),
+  callback = function()
+    vim.opt_local.formatoptions:remove { 'r', 'o' }
+  end,
+})

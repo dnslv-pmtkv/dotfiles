@@ -1,28 +1,30 @@
+local parsers = { 'javascript', 'typescript', 'tsx', 'python', 'lua' }
+
 return {
   'nvim-treesitter/nvim-treesitter',
   lazy = false,
-  dependencies = {
-    'axelvc/template-string.nvim',
-  },
-
   branch = 'main',
   build = ':TSUpdate',
+  dependencies = { 'axelvc/template-string.nvim' },
   config = function()
     local treesitter = require 'nvim-treesitter'
 
-    treesitter.setup {
-      install_dir = vim.fn.stdpath 'data' .. '/site',
+    treesitter.setup { install_dir = vim.fn.stdpath 'data' .. '/site' }
+    treesitter.install(parsers)
 
-      auto_install = true,
-      highlight = { enable = true, additional_vim_regex_highlighting = false },
-      indent = { enable = true },
-    }
-
-    treesitter.install { 'javascript', 'typescript', 'tsx', 'python', 'lua' }
     vim.api.nvim_create_autocmd('FileType', {
-      pattern = { 'python', 'typescript', 'typescriptreact', 'lua' },
+      group = vim.api.nvim_create_augroup('UserTreesitter', { clear = true }),
+      pattern = {
+        'javascript',
+        'javascriptreact',
+        'typescript',
+        'typescriptreact',
+        'python',
+        'lua',
+      },
       callback = function()
         vim.treesitter.start()
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
       end,
     })
 
