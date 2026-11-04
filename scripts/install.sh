@@ -17,12 +17,17 @@ link "$DOTFILES_DIR/tmux/.tmux.conf" "$HOME/.tmux.conf"
 # Zsh
 link "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
 link "$DOTFILES_DIR/zsh/.aliases" "$HOME/.aliases"
+link "$DOTFILES_DIR/zsh/.p10k.zsh" "$HOME/.p10k.zsh"
 
 # Neovim
 link "$DOTFILES_DIR/nvim" "$CONFIG_DIR/nvim"
 
 # Git
 link "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
+
+# SSH
+mkdir -p "$HOME/.ssh" && chmod 700 "$HOME/.ssh"
+link "$DOTFILES_DIR/ssh/config" "$HOME/.ssh/config"
 
 # Themes
 link "$DOTFILES_DIR/themes" "$HOME/.local/share/plasma/look-and-feel"

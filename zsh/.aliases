@@ -1,18 +1,6 @@
 alias vim="nvim"
 
-# Django / Python
-alias soa="source .venv/bin/activate"
-
-alias pmr="python manage.py runserver"
-alias pmmm="python manage.py makemigrations"
-alias pmm="python manage.py migrate"
-alias pms="python manage.py shell_plus"
-
-# Npm
-alias nrd="npm run dev"
-alias nrb="npm run build"
-
-# Git
+# Git (these override the Oh My Zsh git plugin's versions where names clash)
 alias ga='git add'
 alias gc="git commit --verbose"
 alias gp="git push"
@@ -23,8 +11,18 @@ alias grb='git rebase'
 alias grs='git restore'
 alias gss='git stash'
 
-# SSH
-alias ss='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_ed25519'
+# Django / Python
+alias soa="source .venv/bin/activate"
+alias pmr="python manage.py runserver"
+alias pmmm="python manage.py makemigrations"
+alias pmm="python manage.py migrate"
+alias pms="python manage.py shell_plus"
+
+# Npm
+alias nrd="npm run dev"
+alias nrb="npm run build"
+
+# SSH: the systemd ssh-agent runs per login and ~/.ssh/config adds keys on
+# first use. `sa` unlocks the key up front (e.g. before signing commits).
 alias sa='ssh-add ~/.ssh/id_ed25519'
-alias sp='ssh-agent -k'
 alias sr='ssh-add -D'

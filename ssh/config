@@ -1,0 +1,9 @@
+# Machine-specific hosts go in ~/.ssh/config.local (not tracked). It's included
+# first so its settings win over the defaults below.
+Include ~/.ssh/config.local
+
+# Keys are added to the (systemd) ssh-agent the first time they're used, so
+# the passphrase is asked once per login instead of on every connection.
+Host *
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/id_ed25519
