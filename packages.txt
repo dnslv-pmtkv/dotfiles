@@ -1,0 +1,25 @@
+# Packages for scripts/install.sh --packages (Arch Linux).
+# One per line; `aur:` marks AUR packages (installed with paru or yay).
+
+# Shell & terminal
+zsh
+alacritty
+tmux
+ttf-ubuntu-mono-nerd
+
+# Editor & search (telescope, fzf-native and treesitter need make/gcc)
+neovim
+ripgrep
+fd
+fzf
+base-devel
+
+# Git
+git
+openssh
+
+# Languages / tooling
+fnm
+uv
+shellcheck
+aur:jump
