@@ -6,6 +6,8 @@ take effect right away.
 
 ## Desktop (Arch Linux)
 
+![Alacritty + tmux + Neovim with One Dark](assets/screenshot.png)
+
 Clone anywhere, then run the installer:
 
 ```sh
@@ -32,10 +34,10 @@ fnm install --lts
 
 ### Per-machine settings (not tracked)
 
-| File | For |
-|---|---|
-| `~/.gitconfig.local` | git overrides, e.g. a work `user.email` |
-| `~/.ssh/config.local` | ssh hosts |
+| File                  | For                                     |
+| --------------------- | --------------------------------------- |
+| `~/.gitconfig.local`  | git overrides, e.g. a work `user.email` |
+| `~/.ssh/config.local` | ssh hosts                               |
 
 ### Audio (optional)
 
