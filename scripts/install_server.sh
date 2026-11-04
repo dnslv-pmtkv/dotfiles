@@ -7,13 +7,16 @@ set -euo pipefail
 
 REPO_HTTPS="https://github.com/dnslv-pmtkv/dotfiles.git"
 REPO_SSH="git@github.com:dnslv-pmtkv/dotfiles.git"
-DOTFILES_DIR="$HOME/Projects/dotfiles"
+DOTFILES_DIR="$HOME/dotfiles"
 SSH_DIR="$HOME/.ssh"
 KEY="$SSH_DIR/id_ed25519"
 ALLOWED_SIGNERS="$HOME/.config/git/allowed_signers"
 
 info() { echo -e "\033[1;34m==>\033[0m $*"; }
-die()  { echo -e "\033[1;31mError:\033[0m $*" >&2; exit 1; }
+die() {
+  echo -e "\033[1;31mError:\033[0m $*" >&2
+  exit 1
+}
 
 # Ask a y/N question on the terminal even when the script is piped into bash.
 ask_yes() {
@@ -78,7 +81,7 @@ else
   info "Generating SSH key $KEY"
   comment="$EMAIL@$(uname -n)"
   if ask_yes "Protect the new key with a passphrase?"; then
-    ssh-keygen -t ed25519 -C "$comment" -f "$KEY"   # prompts on the tty
+    ssh-keygen -t ed25519 -C "$comment" -f "$KEY" # prompts on the tty
   else
     ssh-keygen -t ed25519 -C "$comment" -f "$KEY" -N ""
   fi
@@ -93,7 +96,7 @@ if ssh-keygen -F github.com -f "$SSH_DIR/known_hosts" >/dev/null; then
   info "github.com already in known_hosts"
 else
   info "Adding github.com to known_hosts"
-  ssh-keyscan -t ed25519 github.com 2>/dev/null >> "$SSH_DIR/known_hosts"
+  ssh-keyscan -t ed25519 github.com 2>/dev/null >>"$SSH_DIR/known_hosts"
 fi
 
 # 6. allowed_signers (for verifying SSH-signed commits) ---------------------
@@ -104,7 +107,7 @@ if grep -qxF "$signer_line" "$ALLOWED_SIGNERS"; then
   info "allowed_signers already contains this key"
 else
   info "Adding key to $ALLOWED_SIGNERS"
-  echo "$signer_line" >> "$ALLOWED_SIGNERS"
+  echo "$signer_line" >>"$ALLOWED_SIGNERS"
 fi
 
 # 7. Next steps -------------------------------------------------------------
