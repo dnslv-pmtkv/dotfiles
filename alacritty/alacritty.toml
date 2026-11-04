@@ -2,9 +2,7 @@
 TERM = "xterm-256color"
 
 [window]
-#decorations = "none"
 dynamic_title = false
-#startup_mode = "Maximized"
 title = "Alacritty"
 
 [font]
@@ -28,9 +26,18 @@ magenta = "#c678dd"
 cyan = "#56b6c2"
 white = "#828997"
 
+[colors.bright]
+black = "#7f848e"
+red = "#e06c75"
+green = "#98c379"
+yellow = "#e5c07b"
+blue = "#61afef"
+magenta = "#c678dd"
+cyan = "#56b6c2"
+white = "#d7dae0"
+
 [keyboard]
 bindings = [
   { key = "F11", action = "ToggleFullScreen" },
-  { key = "Return", mods = "shift",  chars = "\u001B\r" },
+  { key = "Return", mods = "shift", chars = "\u001B\r" },
 ]
-

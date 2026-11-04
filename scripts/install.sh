@@ -24,6 +24,8 @@ link "$DOTFILES_DIR/nvim" "$CONFIG_DIR/nvim"
 
 # Git
 link "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
+mkdir -p "$CONFIG_DIR/git"
+link "$DOTFILES_DIR/git/ignore" "$CONFIG_DIR/git/ignore"
 
 # SSH
 mkdir -p "$HOME/.ssh" && chmod 700 "$HOME/.ssh"

@@ -1,0 +1,9 @@
+# Global gitignore (core.excludesFile). Editor/OS junk only; project-specific
+# ignores belong in each repo's .gitignore.
+.DS_Store
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+.env.local

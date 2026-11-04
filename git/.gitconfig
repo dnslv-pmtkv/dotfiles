@@ -4,11 +4,34 @@
   signingkey = ~/.ssh/id_ed25519.pub
 [core]
   editor = nvim
+  excludesFile = ~/.config/git/ignore
+[init]
+  defaultBranch = main
 [pull]
   rebase = true
+[push]
+  autoSetupRemote = true
+[fetch]
+  prune = true
+[rebase]
+  autoStash = true
+[rerere]
+  enabled = true
+[diff]
+  algorithm = histogram
+[merge]
+  conflictStyle = zdiff3
+[branch]
+  sort = -committerdate
 [gpg]
   format = ssh
-[commit]
-  gpgsign = true
 [gpg "ssh"]
   allowedSignersFile = ~/.config/git/allowed_signers
+[commit]
+  gpgsign = true
+[tag]
+  gpgSign = true
+
+# Per-machine overrides (e.g. a work email); not tracked. Keep last so it wins.
+[include]
+  path = ~/.gitconfig.local
