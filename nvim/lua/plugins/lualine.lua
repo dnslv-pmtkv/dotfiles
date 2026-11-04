@@ -15,8 +15,8 @@ return {
       options = {
         theme = 'onedark',
         icons_enabled = true,
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
+        component_separators = { left = '│', right = '│' },
+        section_separators = { left = '', right = '' },
         disabled_filetypes = {},
 
         globalstatus = true,
