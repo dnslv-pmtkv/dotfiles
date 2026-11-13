@@ -59,6 +59,10 @@ elif [[ -s "$HOME/.nvm/nvm.sh" ]]; then
   . "$NVM_DIR/nvm.sh"
 fi
 
+function homelab() {
+    ssh -t homelab 'tmux new-session -A -s homelab'
+}
+
 [[ -f ~/.aliases ]] && source ~/.aliases
 
 # Prompt config: run `p10k configure` or edit ~/.p10k.zsh
